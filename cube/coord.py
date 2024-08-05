@@ -25,7 +25,16 @@ class CoordCube:
         return s
 
     def move(self, m):
-        self.corntwist = mv.twist_move[N_MOVE * self.corntwist + m]
-        self.cornperm = mv.corners_move[N_MOVE * self.cornperm + m]
-########################################################################################################################
+        self.corntwist = mv.corntwist_move[N_MOVE * self.corntwist + m]
+        self.cornperm = mv.cornperm_move[N_MOVE * self.cornperm + m]
 
+    def is_solved(self):
+        return self.corntwist == SOLVED and self.cornperm == SOLVED
+
+    def to_string(self):
+        from .cubie import CubieCube
+        cc = CubieCube()
+        cc.set_cornertwist(self.corntwist)
+        cc.set_corners(self.cornperm)
+        fc = cc.to_facelet_cube()
+        return fc.to_string()
