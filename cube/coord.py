@@ -38,3 +38,16 @@ class CoordCube:
         cc.set_corners(self.cornperm)
         fc = cc.to_facelet_cube()
         return fc.to_string()
+
+    @staticmethod
+    def from_string(state_string):
+        from .face import FaceCube
+        fc = FaceCube()
+        s = fc.from_string(state_string)
+        if s is not True:
+            raise ValueError("Error in facelet cube")
+        cc = fc.to_cubie_cube()
+        s = cc.verify()
+        if s is not True:
+            raise ValueError("Error in cubie cube")
+        return CoordCube(cc)
