@@ -2,7 +2,6 @@
 
 from .defs import cornerFacelet, cornerColor, N_CORNERS, N_TWIST
 from .enums import Color, Corner as Co
-from . import face
 from .misc import rotate_left, rotate_right
 from random import randrange
 
@@ -62,7 +61,8 @@ class CubieCube:
 
     def to_facelet_cube(self):
         """Returns a facelet representation of the cube."""
-        fc = face.FaceCube()
+        from .face import FaceCube
+        fc = FaceCube()
         for i in Co:
             j = self.cp[i]  # corner j is at corner position i
             ori = self.co[i]  # orientation of C j at position i
