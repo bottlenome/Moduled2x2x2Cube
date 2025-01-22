@@ -1,6 +1,5 @@
 # ####### The cube on the coordinate level is described by a 3-tuple of natural numbers in phase 1 and phase 2. ########
 
-from . import moves as mv
 from .defs import N_MOVE
 
 SOLVED = 0  # 0 is index of solved state (except for u_edges coordinate)
@@ -25,6 +24,7 @@ class CoordCube:
         return s
 
     def move(self, m):
+        from . import moves as mv
         self.corntwist = mv.corntwist_move[N_MOVE * self.corntwist + m]
         self.cornperm = mv.cornperm_move[N_MOVE * self.cornperm + m]
 
