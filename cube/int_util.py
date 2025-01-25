@@ -28,7 +28,7 @@ def string_state_to_list(state):
 
 def move(state, move):
     state_str = list_state_to_string(state)
-    enum_move = Move(0)
+    enum_move = Move(move)
     cc = CoordCube.from_string(state_str)
     cc.move(enum_move)
     next_state_str = cc.to_string()
@@ -37,4 +37,21 @@ def move(state, move):
 if __name__ == '__main__':
     print(list_state_to_string([0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5]))
     print(string_state_to_list("UUUURRRRFFFFDDDDLLLLBBBB"))
-    print(move([0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5], 0))
+    next_state = move([0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5], 0)
+    print(next_state)
+    next_state = move(next_state, 0)
+    print(next_state)
+    next_state = move(next_state, 0)
+    print(next_state)
+    next_state = move(next_state, 0)
+    print(next_state)
+
+    next_state = move(next_state, 0)
+    print(next_state)
+    next_state = move(next_state, 2)
+    print(next_state)
+
+    next_state = move(next_state, 1)
+    print(next_state)
+    next_state = move(next_state, 1)
+    print(next_state)
